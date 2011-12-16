@@ -1,0 +1,128 @@
+\documentclass{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+
+\author{Manuel Hoffmann}
+\title{Induktion}
+
+\begin{document}
+
+\section{Einleitung: Mengen}
+\subsection{Definition}
+Eine Menge ist zunächsteinmal etwas sehr Generelles, man könnte von einer "`Ansammlungen von Dingen"' sprechen. Es soll uns hier aber nicht um Mengenlehre gehen. Schauen wir uns mal ein paar Mengen an:
+\begin{itemize}
+  \item Die Menger aller Grundfarben: $\{\text{Blau, Gelb, Rot}\}$
+  \item Die Menge aller Autokennzeichen $\{\text{KL-AA1, KL-AA2, ...}\}$
+  \item Die Menge aller geraden ganzen positiven Zahlen
+  \item Die Menge aller Verknüpfungen mittels $\land$ und $\lor$ von zwei Konstanten p und q
+  \item Die Menge aller Strings, die nur aus dem Buchstaben $'a'$ bestehen
+  \item ...
+\end{itemize}
+
+Solche Mengen kann man unterschiedlich Beschreiben. Kleine endliche Mengen wie die Grundfarben kann man einfach Aufzählen, bei größeren endlichen oder unendliche Mengen charakterisiert man häufig Eigenschaften der einzelnen Elemente, etwa
+\begin{gather*}
+  \text{Autokennzeichen}_{KL} := \{ \text{kennzeichen} \ | \ \text{kennzeichen beginnt mit "`KL-"'} \}\\
+  \mathbb{P} := \{ p \ | \ p > 1 \text{ und } p | a \cdot b \Rightarrow p | a \lor p | b \} \subseteq \mathbb{N}
+\end{gather*}
+
+
+\subsection{Induktiv definierte Mengen}
+
+Eine dritte Möglichkeit ist es, die Menge zu beschreiben, in dem man eine Konstruktionsvorschrift für sie angibt. Die Konstruktionsvorschrift enthält einen festen Anfang und eine Beschreibung des Nachfolgers jedes Elements. Man sagt, solche Mengen werden \emph{induktiv} definiert, und solche wollen wir uns nun anschauen.
+
+\subsection{Natürliche Zahlen}
+Die Menge der natürlichen Zahlen $\mathbb{N}$ kann man induktiv definieren (vgl. Peano-Axiome), als Anfang wählt man sich 0 oder 1, je nachdem, ob man die 0 haben will, und den Nachfolger beschreiben wir mit der Addition mit 1.
+\begin{gather}
+  0 \in \mathbb{N}\\
+  n \in \mathbb{N} \Rightarrow \operatorname{Nf}(n) = n + 1 \in \mathbb{N}
+\end{gather}
+
+
+
+\subsection{Gerade/ungerade positive Zahlen}
+Die Menge der \emph{ungeraden} positiven Zahlen $\mathcal{U}$ kann man induktiv definieren:
+\begin{gather}
+  1 \in \mathcal{U}\\
+  n \in \mathcal{U} \Rightarrow \operatorname{Nf}(n) = n + 2 \in \mathcal{U}
+\end{gather}
+Und natürlich die Menge der \emph{geraden} positiven Zahlen $\mathcal{G}$:
+\begin{gather}
+  2 \in \mathcal{G}\\
+  n \in \mathcal{G} \Rightarrow \operatorname{Nf}(n) = n + 2 \in \mathcal{G}
+\end{gather}
+Diese Definitionen unterscheiden sich im wesentlichen von der von $\mathbb{N}$ nur durch den Nachfolger, der hier den Abstand 2 hat. Was allerdings bemerkenswert ist: Die Aufbauvorschrift ist in beiden Mengen gleich!
+
+
+
+\subsection{Natürliche Zahlen (2)}
+Eine Äquivalente Definition der natürlichen Zahlen wäre diese:
+\begin{gather}
+  1 \in \mathbb{N}\\
+  2 \in \mathbb{N}\\
+  n \in \mathbb{N} \Rightarrow \operatorname{Nf}(n) = n + 2 \in \mathbb{N}
+\end{gather}
+Hier haben wir nicht nur ein Element, sondern zwei; damit wird auch deutlicher, dass wir immer von einer Startmenge ausgehen können, falls wir das brauchen. Auch wenn es für die Natürlichen zahlen
+
+
+
+\subsection{Logisches Und}
+Wir betrachten nun einfache Formeln wie $(p \land q)$, $q$, $(p \land ((p \land p) \land p))$, also logische Variablen $p$ und $q$, die jeweils die Werte $True$ und $False$ annehmen können, und die mit $\land$ Verknüpft werden. Wir nennen diese Menge $\mathcal{F}_\land$.
+
+\begin{gather}
+  p, q \in \mathcal{F}_\land\\
+  F, G \in \mathcal{F}_\land \Rightarrow (F \land G) \in \mathcal{F}_\land
+\end{gather}
+
+
+
+\subsection{Strings}
+Sei $\mathcal{A}$ die Menge, die nur aus Wörtern mit dem Buchstaben \emph{a} besteht, z.B. \grqq aaaaa\grqq, \grqq \grqq, \grqq a\grqq.... Zur deren Beschreibung greifen wir auf Haskell-Notation zurück und bezeichnen mit dem Doppelpunkt die Anfügeoperation.
+
+\begin{gather}
+  \text{\grqq\grqq} \in \mathcal{A}\\
+  A \in \mathcal{A} \Rightarrow  \text{\grq a \grq} : A \in \mathcal{A}
+\end{gather}
+
+
+\section{Beweise}
+Mit diesen induktiv definierten Mengen möchten wir nun einige triviale Dinge zeigen.
+
+
+\subsection{Gaußformel}
+Die allgemeine Behauptung, die für $n \in \mathbb{N}$ gezeigt werden soll, ist $\sum_{i=0}^n i = \frac{(n+1)n}2$ und hier machen wir uns den induktiven Aufbau der natürlichen Zahlen zu nutze und zeigen, dass diese Gleichheit dort immer gilt:
+
+\begin{gather*}
+  \intertext{Induktionsanfang (IA):}
+  \text{Sei }n = 0: \sum_{i=0}^0 i = 1 = \frac22 = \frac{(1+1)1}2
+  \intertext{Induktionsvoraussetzung (IV):}
+  \text{Gelte für }n \in \mathbb{N} : \sum_{i=0}^n i = \frac{(n+1)n}2
+  \intertext{Induktionsschritt (IS): $n \rightarrow n + 1$}
+  \sum_{i=0}^{n + 1} i = \left ( \sum_{i=0}^n i \right ) + (n + 1)\\
+  \overset{\text{IV}}= \frac{(n+1)n}2 + (n + 1) = \frac{(n+1)n}2 + \frac{(n+1)2}2\\
+  = \frac{(n+1)n + (n+1)2}2 = \frac{(n+1)(n+2)}2
+\end{gather*}
+Was ist hier genau passiert? Im Induktionsanfang haben wir gezeigt, dass die Aussage für einen Anfang, hier $n = 0$, richtig ist. Und der Induktionsschritt zeigt, dass - wie beim induktiven Aufbau von $\mathbb{N}$ - die Eigenschaft auch immer für den Nachfolger gilt.
+
+\subsection{Geradheit}
+Jetzt wollen wir uns der trivialen Aussage widmen, dass jede Zahl aus $\mathcal{G}$ auch gerade ist. Eine Zahl nennen wir gerade, wenn sie sich als $n = 2 \cdot m, m \in \mathbb{N}$ schreiben lässt.
+
+\begin{gather*}
+  \text{IA: Sei } n = 2: 2 = 2 \cdot 1, 1 \in \mathbb{N}\\
+  \text{IV: Gelte für } n \in \mathcal{G} : \exists m \in \mathbb{N} : n = 2 \cdot m\\
+  \intertext{IS: $n \Rightarrow n + 2$}
+  n + 2 \overset{\text{IV}}= 2 \cdot m + 2 = 2 \cdot \underbrace{(m + 1)}_{\in \mathbb{N}}
+\end{gather*}
+Man beachte, dass $n + 2 \in \mathcal{G}$ nach Konstruktionsvorschrift. Was aber \emph{auf keinen Fall geht}, ist es, den Induktionsanfang zu vernachlässigen. Wir erinnern uns an die Menge $\mathcal{U}$, die auch mit dem Abstand 2 aufgebaut wird. Und folgender Schluss ist auch zulässig:
+
+\begin{gather*}
+  \text{Gelte für } n \in \mathcal{U} : \exists m \in \mathbb{N} : n = 2 \cdot m\\
+  \Rightarrow n + 2 \overset{\text{Vor.}}= 2 \cdot m + 2 = 2 \cdot \underbrace{(m + 1)}_{\in \mathbb{N}}
+\end{gather*}
+Aber da es kein Anfangselement gibt, für auf das dieser Schluss angewandt werden kann, bringt uns diese "`halbe Induktion"' nichts.
+
+\end{document}

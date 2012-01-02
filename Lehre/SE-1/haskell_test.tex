@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper,oneside,ngerman]{scrbook}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\pagestyle{empty}
+
+
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+
+\begin{document}
+
+\emph{Name:} \hrulefill
+
+
+\section{Funktionale Programmierung}
+Bäume gehören zu den wichtigsten in der Informatik auftretenden Datenstrukturen. In dieser Aufgabe verwenden wir den Datentyp Tree zur Darstellung von Binärbäumen, die an den Blättern mit Werten markiert sind und an den Knoten mit Operationen:
+
+\begin{code}
+    data Tree = 
+            Value Integer
+          | Mark Op Tree Tree
+          deriving (Eq, Show)
+
+    data Op = Plus | Mult | Minus
+          derivin (Eq, Show)
+\end{code}
+
+Schreiben Sie eine Haskell-Funktion \emph{balanced}, die einen Baum als Eingabe entgegennimmt und entscheidet, ob in diesem Baum genausoviele positive Werte als Blätter vorkommen wie negative. Die Null soll dabei weder als positiv noch negativ zählen. \emph{(6 Punkte)}\\
+\\
+Beispiel:
+\begin{code}
+  balanced (Mark Plus (Value 3) (Mark Minus (Value 0) (Value (-4)))) == True
+  balanced (Mark Plus (Value 3) (Mark Minus (Value 2) (Value (-4)))) == False
+\end{code}
+
+\begin{code}
+  balanced :: Tree -> Bool
+\end{code}
+
+\newpage
+
+
+\section{Funktionale Programmierung}
+Schreiben Sie die Funktionen \emph{laenge}, die die Länge einer Liste berechnet, und \emph{summe}, die die Summe der ersten n Zahlen berechnet. Beachten Sie, dass alle Eingaben behandelt werden müssen und geben Sie die Signatur der Funktionen an. \emph{(4 Punkte)}\\
+Beispiel:
+\begin{code}
+  laenge [[], [1,2], [2]]     -- => 3
+  summe 4                     -- => 10
+
+
+
+
+
+
+
+
+
+
+\end{code}
+
+
+\section{Funktionale Programmierung}
+Gegeben sei folgender Datentyp \emph{Zeit}, der die Menge von Zeitdauer-Angaben im Format \emph{Wochen : Tage : Stunden} modelliert.
+\begin{code}
+  data Zeit = WTS Integer Integer Integer
+\end{code}
+Hierbei gilt, dass die Angaben normiert vorliegen, das heißt alle Komponenten Werte größer gleich 0 beinhalten und die Komponenten Tage und Stunden nur Werte kleiner 7 bzw. 24 enthalten.
+
+(a) Schreiben Sie eine Funktion \emph{inStunden}, die eine Zeit als Parameter entgegennimmt und diese in die Anzahl von Stunden umwandelt. \emph{(2 Punkte)}
+
+\begin{code}
+  inStunden :: Zeit -> Integer
+
+
+
+
+
+
+\end{code}
+
+(b) Schreiben Sie eine Funktion \emph{alsZeit}, die eine ganze Zahl, die eine Anzahl von Stunden darstellt, als Parameter entgegennimmt und diese in eine Zeit umwandelt. \emph{(2 Punkte)}
+
+\begin{code}
+  alsZeit :: Integer -> Zeit
+\end{code}
+
+\end{document}

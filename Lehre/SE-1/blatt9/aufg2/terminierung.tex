@@ -60,8 +60,22 @@ Um mit dieser $\delta$-Funktion jetzt etwas untersuchen zu können, sollten wir 
   G_2(x,y) = (x, \tail y)
 \end{gather*}
 
-Jetzt müssen wir \emph{erstens} Prüfen, dass die rekursiven aufrufe wieder auf zulässigen Parametern erfolgen:
+Jetzt müssen wir \emph{erstens} Prüfen, dass die rekursiven Aufrufe wieder auf zulässigen Parametern erfolgen:
 
 Da die Listen endlich lange sind und im Falle eines rekursiven Aufrufs mindestens ein Element haben, und der rekursiven Aufruf jeweils nur um ein $\tail$ verändert ist, bleiben wir in $P$.
+
+Und \emph{zweitens} sehen wir uns die Bewertung der $\delta$-Funktion für die beiden rekursiven Aufrufe an:
+
+\begin{gather*}
+  \delta (G_1(x,y)) = \delta (\tail x, y) = \length ( \tail x) + \length y\\
+   = \length x - 1 + \length y < \length x + \length y = \delta (x,y)
+\end{gather*}
+
+\begin{gather*}
+  \delta (G_2(x,y)) = \delta (x, \tail y) = \length x + \length ( \tail y)\\
+   = \length x + \length y - 1 < \length x + \length y = \delta (x,y)
+\end{gather*}
+
+War doch einfach? ;)
 
 \end{document}

@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\tail}{tail}
+
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+
+\author{Manuel Hoffmann}
+\title{Induktion}
+
+\begin{document}
+
+\section{merge}
+\begin{code}
+  merge :: ([Integer], [Integer]) -> [Integer]
+  merge ([], b) = b
+  merge (a, []) = a
+  merge (a:a1, b:b1) = if a < b then
+                       a : merge (a1, b:b1)
+                  else b : merge (a:a1, b1)
+\end{code}
+Die Funktion ist definiert auf einem Tupel aus Integer-Listen, das heißt, wir wissen auf jeden Fall
+
+\begin{equation*}
+P \subseteq \text{[Integer]} \times \text{[Integer]}
+\end{equation*}
+eine größere Parametermenge verbietet uns das Typsystem.
+
+Nach Aufgabenstellung können wir uns auf endliche Listen beschränken, d.h
+\begin{gather*}
+  P \subseteq \text{[Integer]} \times \text{[Integer]}, \text{ mit [Integer] endlich}
+  \intertext{Oder auch:}
+  P \subseteq \{(a,b) | a, b \in \text{[Integer]} \land a, b \text{ endlich} \}
+\end{gather*}
+
+Wenn wir uns die rekursiven Aufrufe ansehen, erkennen wir, dass immer ein e Liste der beiden verkürzt wird, daher bietet sich als Deltafunktion die gesammte Länge, d.h. die Summe der beiden Längen an. Die Noethersche Ordnung wäre damit $(\mathbb{N}, \le)$
+Außerdem sehen wir, dass wir den Parameterbereich nicht weiter einschränken brauchen, somit haben wir jetzt:
+
+\begin{gather*}
+N = (\mathbb{N}, le)\\
+P = \{(a,b) | a, b \in \text{[Integer]} \land a, b \text{ endlich} \}\\
+\\
+\delta : P \rightarrow N \\
+\delta (a, b) = \length a + \length b
+\end{gather*}
+
+Um mit dieser $\delta$-Funktion jetzt etwas untersuchen zu können, sollten wir aber genauer aufschreiben, wie die Funktionen $G_1$ und $G_2$, die die Veränderung des formalen Parameters für den rekursiven Aufruf beschreibt, aussieht:
+
+\begin{gather*}
+  G_1 : P \rightarrow P\\
+  G_1(x,y) = (\tail x, y)
+\end{gather*}
+\begin{gather*}
+  G_2 : P \rightarrow P\\
+  G_2(x,y) = (x, \tail y)
+\end{gather*}
+
+Jetzt müssen wir \emph{erstens} Prüfen, dass die rekursiven aufrufe wieder auf zulässigen Parametern erfolgen:
+
+Da die Listen endlich lange sind und im Falle eines rekursiven Aufrufs mindestens ein Element haben, und der rekursiven Aufruf jeweils nur um ein $\tail$ verändert ist, bleiben wir in $P$.
+
+\end{document}

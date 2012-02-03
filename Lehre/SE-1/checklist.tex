@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\newcommand*{\thecheckbox}{\hss[\hss]} 
+\newenvironment*{checklist} 
+{\list{}{\itemsep -2pt 
+\renewcommand*{\makelabel}[1]{\thecheckbox}}} 
+{\endlist} 
+
+
+\author{Manuel Hoffmann}
+\title{SE1-Checkliste}
+
+\begin{document}
+
+\section{Blatt 1}
+Hier ist nicht viel zu tun, das Blatt war erstmal Motivation
+\begin{checklist}
+  \item Weiß ich, wie sich Software zu anderen technischen Systemen verhält? 
+  \item Kenne ich die "`Dimensionen"' von Softwareentwicklung?
+\end{checklist}
+
+\section{Blatt 2}
+
+\begin{checklist}
+  \item Kann ich einen informell beschriebenen Vorgang auch als expliziten Algorithmus beschreiben?
+  \item \emph{Haskell:} Kann ich Funktionenen deklarieren?
+  \item \emph{Haskell:} Kann ich Funktionen aufrufen?
+  \item Kenne ich die Definition für eine kontextfreie Grammatik?
+  \item Weiß ich, was der Unterschied zwischen Syntax und Semantik ist?
+\end{checklist}
+
+Freiwillige Zusatzaufgabe: 2e
+
+\section{Blatt 3}
+
+\begin{checklist}
+  \item Kann ich Syntaxdiagramme lesen?
+  \item Kann ich Syntaxdiagramme in Produktionsregeln einer kontextfreien Sprache übersetzen?
+  \item Kann ich aus einer kontextfreien Sprache Sätze bilden?
+  \item Kann ich herausfinden, ob einer Satz von einer bestimmten kontextfreien Sprache erzeugt wird?
+  \item Weiß ich, was eine "`Linksableitung"' ist?
+  \item Kann ich zeigen, dass eine Grammatik eindeutig ist?
+  \item Kann ich anhand einer informellen Anforderung (Text) eine kontextfreie Grammatik angeben?
+  \item Kenne ich den unterschied zwischen Sprache und Grammatik?
+  \item Kann ich eine Sprache in Mengennotation angeben?
+\end{checklist}
+
+Freiwillige Zusatzaufgabe: 2d
+
+\section{Blatt 4}
+
+\begin{checklist}
+  \item \emph{Haskell:} Kenne ich alle elementare Typen?
+  \item \emph{Haskell:} Weiß ich, wo ich Klammern setzen muss und wo nicht?
+  \item \emph{Haskell:} Erkennte ich den Typ verschiedener Ausdrücke?
+  \item \emph{Haskell:} Weiß ich, welche Ausdrücke welche Fehler nach sich ziehen?
+  \item \emph{Haskell:} Weiß ich, was eine Abstraktion ist?
+  \item \emph{Haskell:} Weiß ich, wie ich Funktionen rekursiv definiere?
+\end{checklist}
+
+Freiwillige Zusatzaufgaben: 7d, 7e, 7f, 7g
+
+\section{Blatt 5}
+
+\begin{checklist}
+  \item \emph{Haskell:} Kann ich Fallunterscheidungen mit Pattern-Matching realisieren?
+  \item \emph{Haskell:} Kann ich Fallunterscheidungen mit Guards realisieren?
+  \item \emph{Haskell:} Kann ich eigene Datenstrukturen bzw. Typen angeben?
+  \item \emph{Haskell:} Kann ich bei meinen eigenen Datenstrukturen verhalten erzwingen?
+  \item \emph{Haskell:} Weiß ich, wie ich mit Konstruktoren verschiedene Ausprägungen meiner eigenen Datenstrukturen unterscheiden kann?
+  \item \emph{Haskell:} Kann ich Diskriminator- und Selektorfunktionen schreiben?
+  \item \emph{Haskell:} Kenne ich die beiden wichtigsten rekursiven Datenstrukturen?
+  \item \emph{Haskell:} Kann ich in rekursiven Datenstrukturen navigieren?
+\end{checklist}
+
+\section{Blatt 6}
+
+\begin{checklist}
+  \item \emph{Haskell:} Kann ich zu einer gegebene Grammatik Worte von einem Programm erzeugen lassen?
+  \item \emph{Haskell:} Kann ich von einem Programm erkennen lassen, ob ein gegebenes Wort von einer gegebenen Grammatik erzeugt werden kann?
+  \item Kenne ich die Prinzipien von Selectionsort, Insertionsort, Mergesort, Quicksort und Bubbelsort?
+  \item \emph{Haskell:} Kann ich Sortieralgorithmen in Haskell beschreiben?
+  \item \emph{Haskell:} Erkenne ich, wie oft gewisse Operationen in Abhängigkeit der Eingabegröße ausgeführt werden?
+  \item \emph{Haskell:} Kann ich Funktionen verketten?
+\end{checklist}
+
+Freiwillige Zusatzaufgaben: 1a, 1b, 6a, 6b, 6c
+
+\section{Blatt 7}
+
+\begin{checklist}
+  \item \emph{Haskell:} Kann ich funktionale Anforderungen an parametrische Typen stellen?
+  \item \emph{Haskell:} Kann ich zu einem Ausdruck den allgemeinsten Typ angeben?
+  \item \emph{Haskell:} Kann ich zu einem allgemeinen Typ ein Funktionsbeispiel angeben?
+  \item \emph{Haskell:} Kann ich mit Funktionen höherer Ordnung umgehen?
+  \item \emph{Haskell:} Kenne ich die Definitionen von foldr, foldl, map, reduce?
+  \item \emph{Haskell:} Kann ich mit Hilfe diesen Funktionen andere Funktionen kürzer nachbauen?
+  \item Kenne ich den Unterschied zwischen strikt und nicht-strikt?
+  \item Kenne ich den Unterschied zwischen aktuellem und formalem Parameter?e
+  \item Kenne ich die Auswertungsstrategie von Haskell?
+  \item 
+\end{checklist}
+
+Freiwillige Zusatzaufgaben: 4i, 4j, 4k, 4l, 5b, 8a, 8b, 8c, 8d, 8e
+
+\section{Blatt 8}
+
+\begin{checklist}
+  \item Weiß ich, was ich mit einer Parameterinduktion beweisen kann?
+  \item Kann ich das mit einer Parameterinduktion zeigen?
+  \item Kann ich zeigen, dass etwas eine Noethersche Ordnung ist?
+  \item Kann ich zu einer gegebenen rekursiven Funktion in Haskell eine Deltafunktion angeben, mit der ein Terminierungsbeweis geführt werden kann?
+  \item Weiß ich, was zu einem Terminierungsbeweis gehört?
+  \item Kann ich eine möglichst große Parametermenge finden, für die eine Funktion terminiert?
+  \item \emph{Java:} (Nachdem wir jetzt auch Objektorientierung behandelt haben) Weiß ich, wieso die Singleton-Vorlage zur Prozeduralen Java-Programmierung so ist, wie sie ist?
+  \item \emph{Java:} Kann ich je nach Zustand den Programmfluss ändern?
+  \item \emph{Java:} Weiß ich, welche Variablen wo gespeichert werden?
+  \item \emph{Java:} Kann ich in Java Prozeduren komplett schreiben?
+  \item \emph{Java:} Weiß ich, für was die einzelnen Schlüsselworte in einer Signatur stehen?
+\end{checklist}
+
+\section{Blatt 9}
+
+\begin{checklist}
+  \item \emph{Java:} Kann ich mit Arrays umgehen?
+  \item \emph{Java:} Kann ich eigene Verbunddatentypen definieren?
+  \item \emph{Java:} (Nachdem wir jetzt auch Objektorientierung behandelt haben) Weiß ich, was es mit Verbunddatentypen auf sich hat?
+  \item \emph{Java:} Weiß ich, welche Fehler wann auftreten können?
+  \item \emph{Java:} Weiß ich, welche Variablen wann und wie "`zur Verfügung stehen"'?
+  \item Weiß ich, was es mit der O-Notation auf sich hat?
+\end{checklist}
+
+Freiwillige Zusatzaufgaben: 2c, 7a, 7b, 7c, 7d
+
+\section{Blatt 10}
+
+\begin{checklist}
+  \item \emph{Java:} Kann ich eine rekursive Prozedur in eine iterative übersetzen?
+  \item \emph{Java:} Kann ich mit rekursiven Verbundtypen umgehen?
+  \item \emph{Java:} Weiß ich, wohin Referenzen zeigen?
+  \item \emph{Java:} Kenne ich den unterschied zwischen Call-by-Value und Call-by-Reference?
+  \item Kann ich von einer gegeben Prozedur die Aufwandsfunktion bestimmen bzw. die Komplexitätsklasse angeben?
+  \item \emph{Java:} Weiß ich, wann und wo Speicher belegt ist?
+\end{checklist}
+
+\section{Blatt 11}
+
+\begin{checklist}
+  \item Kenne ich das UML-Subset der Vorlesung?
+\end{checklist}
+
+\section{Blatt 12}
+
+\begin{checklist}
+  \item \emph{Java:} Kann ich ein UML-Klassendiagramm in Javacode umsetzen und umgekehrt?
+  \item \emph{Java:} Wie kann ich darüber bestimmen, welche Instanzvariablen eines Objekts erreichbar sind?
+  \item \emph{Java:} Weiß ich, welche Methoden static und welche nicht-static sein sollen?
+\end{checklist}
+
+\section{Blatt 13}
+
+\begin{checklist}
+  \item \emph{Java:} Weiß ich, wie ich durch das Typsystem navigieren kann?
+  \item \emph{Java:} Kenne ich den Unterschied zwischen implements und extends?
+  \item \emph{Java:} Weiß ich, welcher Code ausgeführt wird, wenn ich eine Methode auf einem Objekt aufrufe?
+  \item Habe ich die Vorlesungsumfrage ausgefüllt?
+\end{checklist}
+
+\section{Blatt 14}
+
+\begin{checklist}
+  \item \emph{Java:} Kann ich mit Typ-Parametern umgehen?
+  \item \emph{Java:} Kenne ich wichtige Collection-Klasen?
+\end{checklist}
+
+\end{document}

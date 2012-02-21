@@ -1,0 +1,307 @@
+\documentclass[11pt,a4paper,oneside,ngerman]{scrbook}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\pagestyle{empty}
+
+\usepackage{enumitem}
+\usepackage{wasysym}
+
+% for code
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+
+% for tree diagrams
+\usepackage{qtree}
+
+\begin{document}
+
+\emph{Name:} \hrulefill
+
+
+\section{Multiple Choice}
+Ja Nein
+\begin{itemize}[label={\Square \ \Square}]
+\item TODO
+\end{itemize}
+
+
+\newpage
+
+\section{Funktionale Programmierung}
+
+
+\emph{(a)} Ihnen sind die folgenden Funktionsdefinitionen gegeben, jedoch fehlen die Signaturen. Ergänzen Sie die Signaturen mit dem allgemeinstmöglichen Typ.
+\begin{code}
+  a :: 
+
+  a x y z = (y x) && (y z)
+
+  
+  b :: 
+  
+  b x y = b (x + head y) (tail y)
+
+  
+  c ::
+  
+  c x (y:z) = c [y] x ++ z
+
+  
+  d ::
+  
+  d x (y:z) = d (y x) z
+\end{code}
+
+
+
+\emph{(b)} Implementieren Sie die Funktion \emph{foldl}, die mit Hilfe einer Funktion und einem Startwert eine Liste von links ausgehend zu einem Ergebnis zusammenfaltet.
+
+\begin{code}
+  foldl :: 
+
+
+\end{code}
+
+Implementieren Sie die Funktion \emph{foldr}, die mit Hilfe einer Funktion und einem Startwert eine Liste von rechts ausgehend zu einem Ergebnis zusammenfaltet.
+
+\begin{code}
+  foldr :: 
+
+
+\end{code}
+
+Implementieren Sie die Funktion \emph{map}, die eine Funktion und eine Liste von Werten nimmt und als Ergebnis eine Liste mit den Funktionswerten liefert. Beispiele:
+\begin{code}
+  map ((+) 3) [0,1,2,3]             => [3,4,5,6]
+  map length [[], [2,3,4], [2,1]]   => [0,3,2]
+
+  map :: 
+
+
+\end{code}
+
+\newpage
+
+
+
+\section{Funktionale Programmierung}
+Gegeben sei der folgende Datentyp, der einen Binärbaum darstellt, dessen Knoten und Blätter mit Bruchzahlen markiert sind.
+
+\begin{code}
+data FracTree = FracNode FracTree FracTree Integer Integer 
+              | FracLeaf Integer Integer
+\end{code}
+
+Der erste Integer entspricht dem Zähler, der zweite dem Nenner; d.h.
+\begin{code} 
+(FracLeaf 5 7)
+\end{code}
+entspricht dem Bruch: $\frac57$
+\\
+\\
+\emph{(a)} Implementieren Sie eine Funktion \emph{countN}, die zählt, wie viele Knoten eines \emph{FracTree} natürliche Zahlen sind. Geben Sie auch eine sinnvolle Signatur an.
+Beispiele:
+\begin{code}
+  countN (FracNode (FracLeaf 2 5) (FracLeaf 2 1) 3 8) == 1
+  countN (FracNode (FracLeaf 12 3) (FracLeaf 14 7) 2 4) == 2
+
+
+
+
+
+
+
+\end{code}
+
+\emph{(b)} Implementieren Sie eine Funktion \emph{infty}, die testet, ob ein FracTree einen Bruch mit Nenner 0 enthält. Geben Sie auch eine sinnvolle Signatur an.
+Beispiele:
+\begin{code}
+  infty (FracNode (FracLeaf 2 5) (FracLeaf 2 1) 3 8) == False
+  infty (FracNode (FracLeaf 2 5) (FracLeaf 2 0) 3 8) == True
+
+
+
+
+
+
+
+
+
+\end{code}
+
+\newpage
+
+
+\section{Funktionale Programmierung}
+
+Gegeben ist eine Datenstruktur \emph{ListTree}, die einen Binärbaum darstellt, dessen Knoten und Blätter mit Listen von Integern markiert sind. Diese Datenstruktur verfügt über die Konstruktoren \emph{ListNode ListTree ListTree [Integer]} und \emph{ListLeaf [Integer]}.
+Außerdem ist die Datenstruktur \emph{IntTree} mit Integer-Markierungen gegeben. Diese hat die Konstruktoren \emph{IntNode IntTree IntTree Integer} und \emph{IntLeaf Integer}.
+\\
+\\
+\emph{(a)} Schreiben Sie eine Funktion \emph{sumUpToIntTree}, die einen ListTree bekommt und einen IntTree zurückgibt. Dabei soll an jeder entsprechenden Markierung des zurückgegebenen Baumes die Summe der Werte des Eingabebaums stehen. Vergessen Sie die Signatur nicht. Beispiel:
+
+\begin{minipage}[btm]{5cm}
+%\centering
+\Tree
+  [ .[1,2,1]
+    [ .[2,3]
+      [ [ .[1,3] ]
+        [ .[2,4,3] ]
+      ]
+    ]
+    [ .[3,4] ]
+  ]
+
+\end{minipage}
+\begin{minipage}[btm]{1.4cm}
+wird zu
+\end{minipage}
+\begin{minipage}[btm]{5cm}
+%\centering
+\Tree
+  [ .4
+    [ .5
+      [ [ .4 ]
+        [ .9 ]
+      ]
+    ]
+    [ .7 ]
+  ]
+
+\end{minipage}
+
+\begin{code}
+
+
+  sumUpToIntTree ::
+\end{code}
+
+\newpage
+
+
+\section{Sprachen}
+Gegeben: Sprachdef. mit Syntaxdiagrammen
+Frage: Sind Wörter in Sprache
+
+
+Def Grammatik, die nur das leere Wort enthält
+
+TODO
+
+\newpage
+
+
+
+\section{Terminierung}
+
+\emph{(a)} Geben Sie für folgende Funktionen je die größtmögliche Parametermenge an, sodass sie terminieren
+
+\begin{code}
+  f :: Int -> String -> Int
+  f 0 _ = 77
+  f x y = f (x - 1 + length y) (tail y)
+\end{code}
+
+\begin{code}
+  g :: Int -> String -> Int
+  g 0 _ = 77
+  g _ "" = 88
+  g x y = g (x - 1 + length y) (tail y)
+\end{code}
+
+\begin{code}
+  h :: Int -> String -> Int
+  h _ "" = 88
+  h 0 _ = 77
+  h x y = h (x - 1 + length y) (tail y ++ tail y)
+\end{code}
+
+
+\emph{(b)} Geben Sie für die folgende Funktion den größtmöglichen Parameterbereich an und beweisen sie, dass sie terminiert:
+
+\begin{code}
+t :: Int -> Int -> Int
+t 0 0 = 0
+t 0 x = t x + (x `div` 2)
+t x y = y * (t (x - (x `div` 2)) (x + x `div` 2))
+\end{code}
+
+\newpage
+
+\section{Funktionsgleichheit}
+Beweisen Sie, dass folgende Funktionen für alle $n \in \mathbb{N}$ das gleiche berechnen:
+
+$f: N \rightarrow N$
+
+TODO
+
+\newpage
+
+\section{Prozedurale Programmierung}
+Gegeben sind folgende Datenstrukturen:
+
+\begin{code}
+class Vektor {
+  double[] values;
+}
+
+class Matrix {
+  double[][] values;
+}
+\end{code}
+
+Schreiben Sie eine Prozedur \emph{skalarMat(Vektor x, Vektor y, Matrix A)}, die das wie folgt definierte Skalarprodukt berechnet: $\langle x, y\rangle_A  =  x^TAy$.
+
+Dabei bezeichnet $x^T$ den transponierten Vektor; die Matrixmultiplikation ist rechtsassoziativ.
+
+\begin{code}
+  double skalarMat(Vektor x, Vektor y, Matrix A) {
+    
+  
+\end{code}
+
+\newpage
+
+\section{Prozedurale Programmierung}
+
+TODO
+\newpage
+
+
+\section{Prozedurale Programmierung}
+
+TODO
+\newpage
+
+\section{Objektorientierte Modellierung}
+\emph{(a)} Modellieren Sie folgendes Szenario als UML-Klassendiagramm mit Attributen und Methoden. Vergessern Sie die Multiplizitäten dabei nicht. Treffen Sie für nicht angegebene Informationen vernünftige Annahmen.
+
+In einem Handballverein sind Mitglieder entweder Spieler oder Trainer. Alle Mitglieder haben einen Namen und eine Mitgliedsnummer. Spieler haben zusätzlich eine Spielernummer. Der Verein hat mehrere Mannschaften, die alle einen Trainer und einen Co-Trainer haben.
+
+
+\newpage
+
+\emph{(b)} Ergänzen Sie ihr UML-Diagramm um weitere Klassen gemäß der folgenden Beschreibung. Dabei brauchen Sie Attribute und Methoden nicht einzeichnen.
+
+Wir betrachten jetzt den Handballverband. In ihm gibt es mehrere Ligen, in denen jeweils die Mannschaften mehrerer Vereine spielen. Dies tun sie in Hallen. Jedem Verein werden Hallen zur Verfügung gestellt, die dann in einem Spiel die Heimhalle sind.
+
+
+\newpage
+
+\section{Objektorientierte Programmierung - Implementierung}
+Sie haben in der Übung bereits gebräuchliche Datenstrukturen implementiert. Dabei fehlt bisher noch die \emph{Menge}.
+Eine Menge hat folgende Eigenschaften:
+
+\begin{enumerate}
+  \item Eine Menge besteht aus Elementen eines Typs T
+  \item Eine Menge kann leer sein
+  \item Eine Menge ist duplikatfrei
+  \item Mit der Methode \emph{add(T t)} wird ein neues Element der Menge hinzugefügt
+  \item Mit der Methode \emph{remove(T t)} wird das Element t - falls vorhanden - aus der Menge entfernt
+  \item Damit man die Daten einfach auch mit anderen Algorithmen benutzen kann, gibt die Methode \emph{toArray()} alle (noch nicht gelöschten) Elemente der Menge zurück.
+\end{enumerate}
+
+
+\end{document}

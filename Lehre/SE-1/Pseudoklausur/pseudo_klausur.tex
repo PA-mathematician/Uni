@@ -50,7 +50,28 @@ welche Aufgaben in der richtigen Klausur drankommen.}
 \section{Multiple Choice}
 Ja Nein
 \begin{itemize}[label={\Square \ \Square}]
-\item TODO
+  \item Ein Programm, dessen Korrektheit bewiesen wurde, terminiert immer. % nö
+  \item Anforderungen an ein Softwaresystem können funktional und nicht-funktional sein. % ja
+  \item Eine Zeichenreihe ist eine endliche oder unendliche Folge von Zeichen. % nö
+  \item Eine Sprachdefinition mit Syntaxdiagramm kann ein Startsymbol enthalten. %nö
+  \item Die Mächtigkeit der Menge der Produktionen ist bei einer kontextfreien Grammatik immer kleiner als die Mächtigkeit der Terminalsymbolen. %nö
+  \item Ein Satz ist genau dann eindeitig, wenn er genau eine Rechtsableitung besitzt. %ja 
+  \item Es gibt formale Sprachen ohne Semantik. %ja
+  \item Zwei Sprachen mit unterschiedlichen Produktionsregeln können nie gleich sein. %nö
+  \item Eine partielle Funktion ist auf mindestens einem Element ihres Argumentbereichs definiert. %nö
+  \item Bezeichner einer Programmiersprache können überladen sein. %ja
+  \item Deklarationen dienen dazu, einem in einem Programm verwendeten Element einen Wert zuzuweisen. %nö
+  \item Eine Funktionsdeklaration heißt direkt rekursiv, wenn der definierende Ausdruck eine Anwendung der definierten Funktion enthält. %ja
+  \item Eine repetitive Funktionsdeklaration ist linear rekursiv. %ja
+  \item Ein Typ mit Typvariablen ist immer spezieller als ein Typ ohne Typvariablen. %nö
+  \item Ein Programm, das richtige Ergebinsse liefert, wenn es terminiert heißt partiell korrekt. %ja
+  \item Mit Parameterinduktion kann man direkt zeigen, dass ein Programm terminiert. % nö
+  \item Bei einem Terminierungsbeweis muss man lediglich zeigen, dass man aus der Menge der zulässigen Parameter bijektiv in eine noethersche Ordnung abbilden kann. %nö
+  \item Ein Algorithmus, der für gleiche Eingabedaten immer gleich abläuft, heißt deterministisch. %ja
+  \item Ein Algorithmus, der für verschiedene Eingabedaten immer das gleiche Ergebnis ausliefert, heißt determiniert. %ja
+  \item Die Schleifenanweisung einer for-Schleife kann ohne weitere Änderungen durch die einer while-Schleife ersetzt werden. %nein
+  \item Die Schleifenanweisung einer while-Schleife kann ohne weitere Änderungen durch die einer for-Schleife ersetzt werden. %ja
+  
 \end{itemize}
 
 
@@ -269,15 +290,6 @@ t x y = y * (t (x - (x `div` 2)) (x + x `div` 2))
 
 \newpage
 
-\section{Funktionsgleichheit}
-Beweisen Sie, dass folgende Funktionen für alle $n \in \mathbb{N}$ das gleiche berechnen:
-
-$f: N \rightarrow N$
-
-TODO
-
-\newpage
-
 \section{Prozedurale Programmierung}
 Gegeben sind folgende Datenstrukturen:
 
@@ -305,7 +317,25 @@ Dabei bezeichnet $x^T$ den transponierten Vektor; die Matrixmultiplikation ist r
 
 \section{Prozedurale Programmierung}
 
-Eine logische Variable kann mit \emph{true} oder \emph{false} belegt sein kann. Ein Literal ist eine logische Variable oder deren Negation (mit $\neg$). Eine disjuktive Verknüpfung (mit $\lor$) von Literalen heißt \emph{Klausel}, eine konjunktive Verknüpfung von Klauseln (mit $\land$) heißt \emph{Konjunktive Normalform (KNF)}. Das Ziel der Aufgabe ist es, prozeduren auf Formeln in konjunktver Normalform anzuwenden. Beispiele für KNF:
+Eine logische Variable hat einen Namen und kann mit \emph{true} oder \emph{false} belegt sein kann. Ein Literal ist eine logische Variable oder deren Negation (mit $\neg$). Eine disjuktive Verknüpfung (mit $\lor$) von Literalen heißt \emph{Klausel}, eine konjunktive Verknüpfung von Klauseln (mit $\land$) heißt \emph{Konjunktive Normalform (KNF)}.
+
+
+Die Verknüpfungen sind wie folgt definiert:
+
+
+\begin{tabular}[ht]{|c|c|c|c|} %{|l|c|}
+  \hline
+  a & b & a $\land$ b & a $\lor$ b\\
+  \hline
+  False & False & False & False\\
+  False & True & False & True\\
+  True & False & False & True\\
+  True & True & True & True\\
+  \hline
+\end{tabular}
+
+
+Das Ziel der Aufgabe ist es, Prozeduren auf Formeln in konjunktver Normalform anzuwenden. Beispiele für KNF:
 \begin{gather*}
   (a \lor b \lor \neg c) \land ( \neg b \lor c) \\
   (\neg a \lor \neg b \lor c ) \land c \land (a \lor b \lor c)
@@ -315,14 +345,24 @@ Eine logische Variable kann mit \emph{true} oder \emph{false} belegt sein kann. 
 \begin{enumerate}
   \item Variable
   \item Literal
-  \item Klausel
-  \item KNF
+  \item Klausel mit max. 10 Literalten
+  \item KNF mit max. 10 Klauseln
 \end{enumerate}
 
 \emph{(b)} Schreiben sie eine Prozedur \emph{simplify}, die als Parameter eine KNF nimmt und dabei Klauseln streicht, in denen ein Literal und seine Negation vorkommen, und Literale streicht, die doppelt vorkommen. Beispiel:
 \begin{gather*}
   (a \lor \neg a \lor b) \land (a \lor \neg b \lor a) \overset{\text{simplify}}\Rightarrow (a \lor \neg b)
 \end{gather*}
+
+\emph{(c)} Schreiben Sie eine Prozedur \emph{eval}, die als Parameter eine KNF nimmt, und logisch auswertet. Das heißt, je nachdem wie die Variablen belegt sind, soll ein anderer Wahrheitswert zurückgegeben werden. Beispiel:
+\begin{gather*}
+  a, b := \text{True}, c := \text{False} \\
+  (a \lor b \lor \neg c) \land ( \neg b \lor c) = True \land False = False \\
+  (\neg a \lor \neg b \lor c ) \land c \land (a \lor b \lor c) = False \land False \land True = False
+\end{gather*}
+
+
+
 
 \newpage
 

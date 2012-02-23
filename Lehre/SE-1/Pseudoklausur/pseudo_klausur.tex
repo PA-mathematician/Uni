@@ -7,6 +7,7 @@
 
 \usepackage{enumitem}
 \usepackage{wasysym}
+\usepackage{graphicx}
 
 % for code
 \usepackage{fancyvrb}
@@ -17,8 +18,34 @@
 
 \begin{document}
 
-\emph{Name:} \hrulefill
+\thispagestyle{empty}
+\begin{center}
+\Large{\LARGE{Pseudoklausur SE-1, WS-2011/12}}
+\end{center}
+\begin{verbatim}
 
+
+
+
+
+\end{verbatim}
+\begin{center}
+\textbf{{zu Übungs- und Vorbereitungszwecken\\}}
+\textbf{{von Manuel Hoffmann}}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\begin{center}
+\textbf{Diese Pseudoklausur soll lediglich eine zusätzliche Ansammlung an Übungsaufgaben sein, deren Stil
+auch in einer richtigen Klausur drankommen können. Die Auswahl der Aufgaben soll kein Hinweis darauf sein,
+welche Aufgaben in der richtigen Klausur drankommen.}
+\end{center}
+
+
+
+\newpage
 
 \section{Multiple Choice}
 Ja Nein
@@ -182,13 +209,25 @@ wird zu
 
 
 \section{Sprachen}
-Gegeben: Sprachdef. mit Syntaxdiagrammen
-Frage: Sind Wörter in Sprache
+\emph{(a)} Betrachten Sie folgende (unvollständige) Sprachdefinition mit Syntaxdiagrammen:
+
+\begin{figure}[htbp]
+  \includegraphics[height=5.5cm]{insert-stmt.png}
+  \caption{Insert-Statement von SQLite}
+\end{figure}
+\emph{database-name}, \emph{table-name} und \emph{column-name} sollen dabei Konkatenationen von Groß- und Kleinbuchstaben sein, d.h. insbesondere keine Leer- und Sonderzeichen enthalten, ebenso für die Ausdrücke des nicht dargestellten Diagramms \emph{expr}. Das weiterhin nicht dargestellte Diagramm \emph{select-stmt} können Sie vernachlässigen.
+
+Kreuzen Sie diejenigen Worte an, die mit dieser Sprachdefinition gebildet werden können.
+\begin{itemize}[label={\Square}]
+  \item REPLACE OR ABORT INTO mytable DEFAULT VALUES
+  \item INSERT INTO mydatabase DEFAULT VALUES
+  \item INSERT OR FAIL INTO mydb.mytbl (INSERT, OR, FAIL) VALUES (mydb, mytbl)
+  \item insert into MYDATABASE default values
+\end{itemize}
 
 
-Def Grammatik, die nur das leere Wort enthält
+\emph{(b)} Definieren Sie eine Grammatik, deren erzeugte Sprache nur das leere Wort enthält.
 
-TODO
 
 \newpage
 
@@ -266,13 +305,25 @@ Dabei bezeichnet $x^T$ den transponierten Vektor; die Matrixmultiplikation ist r
 
 \section{Prozedurale Programmierung}
 
-TODO
-\newpage
+Eine logische Variable kann mit \emph{true} oder \emph{false} belegt sein kann. Ein Literal ist eine logische Variable oder deren Negation (mit $\neg$). Eine disjuktive Verknüpfung (mit $\lor$) von Literalen heißt \emph{Klausel}, eine konjunktive Verknüpfung von Klauseln (mit $\land$) heißt \emph{Konjunktive Normalform (KNF)}. Das Ziel der Aufgabe ist es, prozeduren auf Formeln in konjunktver Normalform anzuwenden. Beispiele für KNF:
+\begin{gather*}
+  (a \lor b \lor \neg c) \land ( \neg b \lor c) \\
+  (\neg a \lor \neg b \lor c ) \land c \land (a \lor b \lor c)
+\end{gather*}
 
+\emph{(a)} Modellieren Sie Datenstrukturen für:
+\begin{enumerate}
+  \item Variable
+  \item Literal
+  \item Klausel
+  \item KNF
+\end{enumerate}
 
-\section{Prozedurale Programmierung}
+\emph{(b)} Schreiben sie eine Prozedur \emph{simplify}, die als Parameter eine KNF nimmt und dabei Klauseln streicht, in denen ein Literal und seine Negation vorkommen, und Literale streicht, die doppelt vorkommen. Beispiel:
+\begin{gather*}
+  (a \lor \neg a \lor b) \land (a \lor \neg b \lor a) \overset{\text{simplify}}\Rightarrow (a \lor \neg b)
+\end{gather*}
 
-TODO
 \newpage
 
 \section{Objektorientierte Modellierung}

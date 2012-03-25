@@ -71,7 +71,9 @@ Ja Nein
   \item Ein Algorithmus, der für verschiedene Eingabedaten immer das gleiche Ergebnis ausliefert, heißt determiniert. %ja
   \item Die Schleifenanweisung einer for-Schleife kann ohne weitere Änderungen durch die einer while-Schleife ersetzt werden. %nein
   \item Die Schleifenanweisung einer while-Schleife kann ohne weitere Änderungen durch die einer for-Schleife ersetzt werden. %ja
-  
+
+
+  \item Wird ein Objekt persistent gemacht, kann man 
 \end{itemize}
 
 
@@ -82,23 +84,23 @@ Ja Nein
 
 \emph{(a)} Ihnen sind die folgenden Funktionsdefinitionen gegeben, jedoch fehlen die Signaturen. Ergänzen Sie die Signaturen mit dem allgemeinstmöglichen Typ.
 \begin{code}
-  a :: 
+  a :: t -> (t -> Bool) -> t -> Bool
 
   a x y z = (y x) && (y z)
 
   
-  b :: 
+  b :: Num a => a -> [a] -> t
   
   b x y = b (x + head y) (tail y)
 
   
-  c ::
+  c :: [a] -> [a] -> [a]
   
   c x (y:z) = c [y] x ++ z
 
   
-  d ::
-  
+  d :: t1 -> [t1 -> t1] -> t
+
   d x (y:z) = d (y x) z
 \end{code}
 

@@ -13,7 +13,7 @@
 class DatMatrix
 
 	attr_reader :n
-	attr_accessor :m
+	attr_accessor :m, :array
 
 	# We store the following
 	#   - the one integer 'n'
@@ -30,6 +30,13 @@ class DatMatrix
 		(1..n).each do |i|
 			@array[v_position(i)] = [i]
 		end
+	end
+
+	# Produces a copy of the DatMatrix object called
+	def copy
+		o = DatMatrix.new @n
+		o.array = @array.dup
+		o
 	end
 
 	# gets the weight of the coordinate i, j

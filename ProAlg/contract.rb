@@ -19,6 +19,25 @@ def contract w
     contract w
 end
 
+# As above but without recursion
+def k_contract w, k
+
+	k.times do |i|
+		if w.m == 2
+			y = w.get_v 1
+			cap = w.get_W 1
+			return [y, cap]
+		end
+
+		edge = select_edge w
+		contract_edge w, edge
+
+		w.m -= 1
+	end
+end
+
+
+
 # Returns an array [row, col] with indeces.
 # Note: row < col holds!
 def select_edge w

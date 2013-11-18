@@ -1,5 +1,6 @@
 load 'datMatrix.rb'
 load 'contract.rb'
+load 'fastcut.rb'
 
 m = DatMatrix.new 5
 
@@ -19,6 +20,11 @@ puts "============="
 puts "Before:"
 m.print
 
+
+
+# multiline comment
+if false
+
 puts "-------------"
 puts "Contracting"
 puts "-------------"
@@ -32,3 +38,8 @@ puts "============="
 puts "Result:"
 puts "  - capacity: #{res[1]}"
 puts "  - V_0: #{res[0]}"
+
+end
+
+r = n_fastcut m
+puts r

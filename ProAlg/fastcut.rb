@@ -1,4 +1,20 @@
 def n_fastcut w
+	smallest = -1
+	smallest_w = nil
+
+	no = Math.log2(w.n)**2
+	no.ceil.times do |n|
+		cur_w = w.copy
+		cur = fastcut cur_w
+		if cur < smallest || smallest == -1
+			smallest_w = cur_w
+			smallest = cur
+		end
+	end
+	[smallest, smallest_w]
+end
+
+def fastcut w
 
 	if w.m <= 3
 		return enum_edge w
@@ -12,8 +28,8 @@ def n_fastcut w
 	k_contract w1, p
 	k_contract w2, p
 
-	r1 = n_fastcut w1
-	r2 = n_fastcut w2
+	r1 = fastcut w1
+	r2 = fastcut w2
 
 	return r1 < r2 ? r1 : r2
 end

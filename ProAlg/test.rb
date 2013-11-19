@@ -21,25 +21,10 @@ puts "Before:"
 m.print
 
 
-
-# multiline comment
-if false
-
-puts "-------------"
-puts "Contracting"
-puts "-------------"
-res = contract m
-
-puts "After:"
-m.print
-
+r = n_fastcut m
 
 puts "============="
-puts "Result:"
-puts "  - capacity: #{res[1]}"
-puts "  - V_0: #{res[0]}"
-
-end
-
-r = n_fastcut m
-puts r
+puts "After:"
+puts " capacity: #{r[0]}"
+puts " v_0: #{r[1].get_v 1}"
+puts " v_1 is the rest :)"
